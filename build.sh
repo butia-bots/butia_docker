@@ -28,7 +28,7 @@
 
 set -e
 
-IMAGE_NAME="ghcr.io/hsr-project/tmc_wrs_docker"
+IMAGE_NAME="ghcr.io/butia-bots/tmc_wrs_docker"
 
 BUILD_DATE=`date +%Y%m%d`
 BUILD_ARGS=""
@@ -45,5 +45,5 @@ fi
 
 docker build ${BUILD_ARGS} -t ${IMAGE_NAME}:latest . # -t ${IMAGE_NAME}:${BUILD_DATE}
 docker build ${BUILD_ARGS} --build-arg BASE_IMAGE=${IMAGE_NAME}:latest -f Dockerfile.nvidia -t ${IMAGE_NAME}:nvidia . # -t ${IMAGE_NAME}:nvidia-${BUILD_DATE}
-docker build ${BUILD_ARGS} --build-arg BASE_IMAGE=${IMAGE_NAME}:latest -f Dockerfile.forclass -t ${IMAGE_NAME}:forclass . # -t ${IMAGE_NAME}:forclass-${BUILD_DATE}
-docker build ${BUILD_ARGS} --build-arg BASE_IMAGE=${IMAGE_NAME}:latest -f Dockerfile.challenge -t ${IMAGE_NAME}:challenge . # -t ${IMAGE_NAME}:challenge-${BUILD_DATE}
+#docker build ${BUILD_ARGS} --build-arg BASE_IMAGE=${IMAGE_NAME}:latest -f Dockerfile.forclass -t ${IMAGE_NAME}:forclass . # -t ${IMAGE_NAME}:forclass-${BUILD_DATE}
+#docker build ${BUILD_ARGS} --build-arg BASE_IMAGE=${IMAGE_NAME}:latest -f Dockerfile.challenge -t ${IMAGE_NAME}:challenge . # -t ${IMAGE_NAME}:challenge-${BUILD_DATE}

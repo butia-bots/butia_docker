@@ -1,6 +1,8 @@
-**/.git
+build
+devel
 build
 devel
 logs
+src
 .catkin_tools
 .catkin_workspace

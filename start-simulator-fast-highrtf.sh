@@ -42,4 +42,4 @@ export GAZEBO_IP_WHITE_LIST="127.0.0.1"
 
 rosrun tmc_gazebo_task_evaluators setup_score_widget
 
-roslaunch hsrb_gazebo_launch_oss_stacks wrs_practice0.launch fast_physics:=true highrtf:=true
+roslaunch doris_simulation_larc2021 doris_simulation_larc2021.launch
