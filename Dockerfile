@@ -67,6 +67,8 @@ RUN apt-get update && \
     ros-melodic-depth-image-proc \
     ros-melodic-effort-controllers \
     ros-melodic-ros-controllers \
+    ros-melodic-navigation \
+    ros-melodic-slam-gmapping \
     ros-melodic-pcl-ros \
     ros-melodic-tf-conversions \
     ros-melodic-moveit-ros-perception && \
@@ -76,10 +78,13 @@ RUN apt-get update && \
 
 RUN mkdir /wrs_ws
 ADD src /wrs_ws/src
-RUN cd /wrs_ws/src && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_init_workspace || true
+#RUN cd /wrs_ws/src && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_init_workspace || true
+RUN cd /wrs_ws/src && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_init_workspace
 #RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y
-RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="darknet_ros_msgs;butia_vision_msgs" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
-RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
+#RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="darknet_ros_msgs;butia_vision_msgs" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
+#RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
+RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="darknet_ros_msgs;butia_vision_msgs" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
+RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
 
 ADD entrypoint-wrs.sh /entrypoint.sh
 
@@ -88,7 +93,7 @@ ENTRYPOINT ["/entrypoint.sh"]
 #ADD filterable-rosmaster.py /opt/ros/melodic/bin/
 #RUN rm /opt/ros/$ROS_DISTRO/bin/rosmaster && ln -s /opt/ros/$ROS_DISTRO/bin/filterable-rosmaster.py /opt/ros/$ROS_DISTRO/bin/rosmaster
 
-RUN source /opt/ros/$ROS_DISTRO/setup.bash && rosrun tmc_gazebo_task_evaluators setup_score_widget
+RUN source /wrs_ws/devel/setup.bash && rosrun tmc_gazebo_task_evaluators setup_score_widget
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 

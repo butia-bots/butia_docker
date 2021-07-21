@@ -27,7 +27,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 set -e
 
-source /opt/ros/$ROS_DISTRO/setup.bash
+#source /opt/ros/$ROS_DISTRO/setup.bash
+source /wrs_ws/devel/setup.bash
 source /usr/share/gazebo/setup.sh
 
 # make rosmaster accesible from the host
