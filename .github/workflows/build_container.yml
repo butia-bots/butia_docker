@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Install dependencies
         run: |
-          apt install -y python3-vcstool
+          sudo apt install -y python3-vcstool
       - name: Clone repositories
         run: |
           vcs import --recursive < butia_minimal.repos
