@@ -1,0 +1,21 @@
+name: "Build Docker Image"
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_registry_image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install dependencies
+        run: |
+          apt install -y python3-vcstool
+      - name: Clone repositories
+        run: |
+          vcs import --recursive < butia_minimal.repos
+      - name: Build images
+        run: |
+          ./build.sh
+      - name: Push images
+        run: |
+          ./push.sh   
