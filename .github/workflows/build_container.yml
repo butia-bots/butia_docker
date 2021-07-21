@@ -12,6 +12,7 @@ jobs:
         run: |
           sudo pip install vcstool
       - name: Clone repositories
+        uses: actions/checkout@v2
         run: |
           vcs import --recursive < butia_minimal.repos
       - name: Build images
