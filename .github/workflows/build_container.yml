@@ -19,7 +19,7 @@ jobs:
           vcs import --recursive < butia_minimal.repos
       - name: Build images
         run: |
-          ./build.sh
+          ./build.sh --chache-from ghcr.io/butia-bots/tmc_wrs_docker
       - name: Log into registry
         run: | 
           echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
