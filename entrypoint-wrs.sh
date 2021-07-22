@@ -31,6 +31,8 @@ set -e
 source /wrs_ws/devel/setup.bash
 source /usr/share/gazebo/setup.sh
 
+export GAZEBO_MODEL_PATH=/wrs_ws/src/tmc_wrs_gazebo/tmc_wrs_gazebo_worlds/models/
+
 # make rosmaster accesible from the host
 export ROS_IP=`hostname -i`
 
