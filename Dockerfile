@@ -84,8 +84,8 @@ RUN cd /wrs_ws/src && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_init_work
 #RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && rosdep update && rosdep install --from-paths src --ignore-src -r -y
 #RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="darknet_ros_msgs;butia_vision_msgs" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
 #RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/opt/ros/$ROS_DISTRO -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
-RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="darknet_ros_msgs;butia_vision_msgs" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
-RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make install -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
+RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="darknet_ros_msgs;butia_vision_msgs" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
+RUN cd /wrs_ws && source /opt/ros/$ROS_DISTRO/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_ENABLE_TESTING=0 -DCATKIN_WHITELIST_PACKAGES="" -DCATKIN_BLACKLIST_PACKAGES="hector_gazebo_plugins"
 
 ADD entrypoint-wrs.sh /entrypoint.sh
 
