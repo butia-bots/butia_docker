@@ -61,4 +61,6 @@ RUN curl -sSL https://downloads.sourceforge.net/project/virtualgl/"${VIRTUALGL_V
     rm virtualgl_*_amd64.deb
 ENV PATH /opt/VirtualGL/bin:${PATH}
 
+RUN pip3 install pyyaml rospkg empy torch torchvision && pip3 install git+https://github.com/facebookresearch/detectron2.git
+
 RUN sed -i -e 's/ roslaunch / \/opt\/VirtualGL\/bin\/vglrun roslaunch /' /etc/supervisor/supervisord.conf

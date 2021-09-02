@@ -34,8 +34,6 @@ RUN apt-get update && \
     apt-get install -y curl apt-transport-https python-pip python3-pip && \
     apt-get clean
 
-RUN pip3 install pyyaml rospkg empy torch torchvision && pip3 install git+https://github.com/facebookresearch/detectron2.git
-
 # OSRF distribution is better for gazebo
 RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' && \
     curl -L http://packages.osrfoundation.org/gazebo.key | apt-key add -
