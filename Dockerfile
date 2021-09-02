@@ -31,8 +31,10 @@ SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt-get install -y curl apt-transport-https python-pip && \
+    apt-get install -y curl apt-transport-https python-pip python3-pip && \
     apt-get clean
+
+RUN pip3 install pyyaml rospkg empy torch torchvision && pip3 install git+https://github.com/facebookresearch/detectron2.git
 
 # OSRF distribution is better for gazebo
 RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list' && \
@@ -98,10 +100,7 @@ RUN source /wrs_ws/devel/setup.bash && rosrun tmc_gazebo_task_evaluators setup_s
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
-VOLUME [ \
-    "/opt/ros/melodic" \
-    "/wrs_ws/" \
-    ]
+VOLUME [ "/opt/ros/melodic", "/wrs_ws/" ]
 
 CMD ["/usr/local/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
 

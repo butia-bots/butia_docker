@@ -55,6 +55,10 @@ repositories:
     type: git
     url: https://github.com/JenniferBuehler/general-message-pkgs.git
     version: master
+  src/gqcnn:
+    type: git
+    url: https://github.com/BerkeleyAutomation/gqcnn.git
+    version: master
   src/hector_gazebo:
     type: git
     url: https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git
@@ -71,6 +75,10 @@ repositories:
     type: git
     url: https://github.com/tahsinkose/panda_moveit_config.git
     version: melodic-devel
+  src/pysdf:
+    type: git
+    url: https://github.com/andreasBihlmaier/pysdf.git
+    version: master
   src/tmc_gazebo_task_evaluators:
     type: git
     url: https://github.com/hsr-project/tmc_gazebo_task_evaluators.git

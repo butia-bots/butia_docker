@@ -1,0 +1,36 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/wrs_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/wrs_ws/src/butia_speech/include/**",
+        "/wrs_ws/src/butia_vision/butia_vision_bridge/include/**",
+        "/wrs_ws/src/vision_opencv/cv_bridge/include/**",
+        "/wrs_ws/src/darknet_ros/darknet_ros/include/**",
+        "/wrs_ws/src/gazebo-pkgs/gazebo_grasp_plugin/include/**",
+        "/wrs_ws/src/gazebo-pkgs/gazebo_state_plugins/include/**",
+        "/wrs_ws/src/gazebo-pkgs/gazebo_test_tools/include/**",
+        "/wrs_ws/src/gazebo-pkgs/gazebo_version_helpers/include/**",
+        "/wrs_ws/src/gazebo-pkgs/gazebo_world_plugin_loader/include/**",
+        "/wrs_ws/src/hector_gazebo/hector_gazebo_plugins/include/**",
+        "/wrs_ws/src/hector_gazebo/hector_gazebo_thermal_camera/include/**",
+        "/wrs_ws/src/butia_vision/image2kinect/include/**",
+        "/wrs_ws/src/vision_opencv/image_geometry/include/**",
+        "/wrs_ws/src/butia_vision/image_server/include/**",
+        "/wrs_ws/src/LMS1xx/include/**",
+        "/wrs_ws/src/butia_moveit/moveit_apps/include/**",
+        "/wrs_ws/src/general-message-pkgs/object_msgs_tools/include/**",
+        "/wrs_ws/src/butia_vision/object_recognition/include/**",
+        "/wrs_ws/src/butia_vision/segmentation/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
