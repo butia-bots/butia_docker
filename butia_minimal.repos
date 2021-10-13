@@ -42,7 +42,7 @@ repositories:
   src/butia_vision:
     type: git
     url: https://github.com/butia-bots/butia_vision.git
-    version: 3d-model-alignment
+    version: remove-filesystem-dependency
   src/butia_world:
     type: git
     url: https://github.com/butia-bots/butia_world.git
