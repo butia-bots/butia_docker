@@ -74,6 +74,7 @@ RUN apt-get update && \
     ros-melodic-slam-gmapping \
     ros-melodic-pcl-ros \
     ros-melodic-tf-conversions \
+    ros-melodic-vision-msgs \
     ros-melodic-moveit-ros-perception && \
     pip install -U --ignore-installed pyassimp supervisor supervisor_twiddler && \
     apt-get autoremove -y && \
