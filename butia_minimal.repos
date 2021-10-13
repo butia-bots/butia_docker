@@ -1,16 +1,24 @@
 repositories:
+  src/Detectron2_ros:
+    type: git
+    url: https://github.com/DavidFernandezChaves/Detectron2_ros.git
+    version: master
   src/LMS1xx:
     type: git
     url: https://github.com/clearpathrobotics/LMS1xx.git
     version: noetic-devel
+  src/PoseCNN-PyTorch:
+    type: git
+    url: https://github.com/NVlabs/PoseCNN-PyTorch.git
+    version: main
   src/butia_behavior:
     type: git
     url: https://github.com/butia-bots/butia_behavior.git
-    version: moveit-states
+    version: gripper_range_sensor
   src/butia_description:
     type: git
     url: https://github.com/butia-bots/butia_description.git
-    version: fix-urdf-collisions
+    version: gripper_range_sensor
   src/butia_door_checking:
     type: git
     url: https://github.com/butia-bots/butia_door_checking.git
@@ -18,7 +26,7 @@ repositories:
   src/butia_moveit:
     type: git
     url: https://github.com/butia-bots/butia_moveit.git
-    version: hand-eye-camera
+    version: master
   src/butia_navigation_system:
     type: git
     url: https://github.com/butia-bots/butia_navigation_system.git
@@ -26,7 +34,7 @@ repositories:
   src/butia_simulation:
     type: git
     url: https://github.com/butia-bots/butia_simulation.git
-    version: main
+    version: change_home_position
   src/butia_speech:
     type: git
     url: https://github.com/butia-bots/butia_speech.git
@@ -34,18 +42,22 @@ repositories:
   src/butia_vision:
     type: git
     url: https://github.com/butia-bots/butia_vision.git
-    version: master
+    version: 3d-model-alignment
   src/butia_world:
     type: git
     url: https://github.com/butia-bots/butia_world.git
-    version: moveit
+    version: master
   src/butia_world_msgs:
     type: git
     url: https://github.com/butia-bots/butia_world_msgs.git
     version: moveit
   src/darknet_ros:
     type: git
-    url: https://github.com/leggedrobotics/darknet_ros.git
+    url: https://github.com/wmoralesap/darknet_ros.git
+    version: yolov4
+  src/dope:
+    type: git
+    url: https://github.com/NVlabs/Deep_Object_Pose.git
     version: master
   src/gazebo-pkgs:
     type: git
@@ -71,6 +83,18 @@ repositories:
     type: git
     url: https://github.com/crislmfroes/mask_rcnn_ros.git
     version: kinetic-devel
+  src/nn_data_collection:
+    type: git
+    url: https://github.com/Navy-RISE-Lab/nn_data_collection.git
+    version: main
+  src/object_recognition_msgs:
+    type: git
+    url: https://github.com/wg-perception/object_recognition_msgs.git
+    version: master
+  src/openai_ros:
+    type: git
+    url: https://bitbucket.org/theconstructcore/openai_ros.git
+    version: kinetic-devel
   src/panda_moveit_config:
     type: git
     url: https://github.com/tahsinkose/panda_moveit_config.git
@@ -87,7 +111,11 @@ repositories:
     type: git
     url: https://github.com/hsr-project/tmc_wrs_gazebo.git
     version: master
-  src/vision_opencv:
+  src/yolact_ros:
     type: git
-    url: https://github.com/ros-perception/vision_opencv.git
-    version: melodic
+    url: https://github.com/Eruvae/yolact_ros.git
+    version: master
+  src/yolact_ros_msgs:
+    type: git
+    url: https://github.com/Eruvae/yolact_ros_msgs.git
+    version: master

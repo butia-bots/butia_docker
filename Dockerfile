@@ -45,6 +45,8 @@ RUN apt-get update && \
     ros-melodic-gazebo-ros ros-melodic-gazebo-plugins ros-melodic-gazebo-ros-control libgazebo9-dev libignition-transport4-dev libpoco-dev python-scipy libgsl-dev \
     ros-melodic-dwa-local-planner \
     ros-melodic-rviz \
+    ros-melodic-smach-ros \
+    ros-melodic-moveit-commander \
     ros-melodic-eigen-conversions \
     ros-melodic-robot-state-publisher \
     ros-melodic-moveit-core \
