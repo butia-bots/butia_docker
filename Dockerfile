@@ -31,7 +31,7 @@ SHELL ["/bin/bash", "-c"]
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    apt-get install -y curl apt-transport-https python-pip python3-pip && \
+    apt-get install -y curl apt-transport-https python-pip python3-pip redis && \
     apt-get clean
 
 # OSRF distribution is better for gazebo
@@ -76,7 +76,7 @@ RUN apt-get update && \
     ros-melodic-tf-conversions \
     ros-melodic-vision-msgs \
     ros-melodic-moveit-ros-perception && \
-    pip install -U --ignore-installed pyassimp supervisor supervisor_twiddler && \
+    pip install -U --ignore-installed pyassimp supervisor supervisor_twiddler redis && \
     apt-get autoremove -y && \
     apt-get clean
 
