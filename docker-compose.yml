@@ -49,3 +49,22 @@ services:
       - xserver
     depends_on:
       - xserver
+  workspace:
+    image: devrt/ros-devcontainer-vscode:melodic-desktop
+    ipc: host
+    security_opt:
+      - seccomp:unconfined
+    ports:
+      - "3001:3000"
+      - "3002:8888"
+    volumes:
+      - .:/workspace:cached
+      - ~/.gitconfig:/home/developer/.gitconfig
+    environment:
+      - DISPLAY=:0
+      - ROS_MASTER_URI=http://simulator:11311/
+    volumes_from:
+      - xserver
+      - simulator
+    depends_on:
+      - xserver
