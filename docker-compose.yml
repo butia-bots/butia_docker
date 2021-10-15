@@ -38,7 +38,7 @@ services:
       interval: "1s"
       retries: 20
   simulator:
-    image: ghcr.io/butia-bots/tmc_wrs_docker:nvidia
+    image: ghcr.io/butia-bots/tmc_wrs_docker:latest
     runtime: nvidia
     ipc: host
     security_opt:
@@ -50,7 +50,7 @@ services:
     depends_on:
       - xserver
   workspace:
-    image: devrt/ros-devcontainer-vscode:melodic-desktop
+    image: ghcr.io/butia-bots/ros-devcontainer-vscode:latest
     ipc: host
     security_opt:
       - seccomp:unconfined
