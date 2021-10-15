@@ -41,7 +41,7 @@ RUN apt-get update && \
     apt-get clean
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list' && \
-    curl -L https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+    curl -L https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
 
 
 # OSRF distribution is better for gazebo
