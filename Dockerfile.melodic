@@ -55,6 +55,7 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     ros-melodic-ros-core \
     ros-melodic-gazebo-ros \
+    ros-melodic-gazebo-plugins \
     ros-melodic-eigen-conversions \
     ros-melodic-robot-state-publisher \
     ros-melodic-urdfdom-py \
