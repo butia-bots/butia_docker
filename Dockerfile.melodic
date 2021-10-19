@@ -66,6 +66,7 @@ RUN apt-get update && \
     liburdfdom-tools \
     ros-melodic-effort-controllers \
     ros-melodic-ros-controllers \
+    python-rosdep \
     ros-melodic-tf-conversions && \
     pip install pyassimp supervisor supervisor_twiddler && \
     apt-get autoremove -y && \
@@ -76,6 +77,8 @@ RUN mkdir -p /butia_ws
 WORKDIR /butia_ws
 
 COPY ./src ./src
+
+RUN rosdep init && rosdep update && rodep install --from-paths src --ignore-src
 
 RUN source /opt/ros/melodic/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release
 
