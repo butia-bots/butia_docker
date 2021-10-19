@@ -38,7 +38,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES \
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y curl apt-transport-https python-pip python3-pip git && \
-    apt-get sutoremove -y && \
+    apt-get autoremove -y && \
     apt-get clean
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list' && \
