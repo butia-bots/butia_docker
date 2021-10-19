@@ -34,43 +34,27 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV NVIDIA_VISIBLE_DEVICES \
     ${NVIDIA_VISIBLE_DEVICES:-all}
 ENV NVIDIA_DRIVER_CAPABILITIES \
-    ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics,compat32,utility,compute
+    ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}compute,compat32,graphics,utility,video,display
 
-RUN apt-get update && \
-    apt-get install --no-install-recommends -y curl apt-transport-https python-pip python3-pip git && \
-    apt-get autoremove -y && \
-    apt-get clean
-
-RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list' && \
-    curl -L https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+RUN apt-get update && apt-get install --no-install-recommends -y wget software-properties-common curl lsb-release
 
 
-# OSRF distribution is better for gazebo
-RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable bionic main" > /etc/apt/sources.list.d/gazebo-stable.list' && \
-    curl -L http://packages.osrfoundation.org/gazebo.key | apt-key add -
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
+    curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
+
 
 # install depending packages
 RUN apt-get update && \
     apt-get upgrade -y && \
     apt-get install --no-install-recommends -y \
-    ros-melodic-ros-core \
-    ros-melodic-gazebo-ros \
-    ros-melodic-gazebo-plugins \
-    ros-melodic-eigen-conversions \
-    ros-melodic-robot-state-publisher \
-    ros-melodic-urdfdom-py \
-    ros-melodic-roslint \
-    ros-melodic-joint-state-controller \
-    ros-melodic-xacro \
-    ros-melodic-joint-state-publisher \
-    liburdfdom-tools \
-    ros-melodic-effort-controllers \
-    ros-melodic-ros-controllers \
-    python-rosdep \
-    ros-melodic-tf-conversions && \
+    curl apt-transport-https python-pip python3-pip git \
+    ros-melodic-desktop-full \
+    python-rosdep && \
     pip install pyassimp supervisor supervisor_twiddler && \
     apt-get autoremove -y && \
     apt-get clean
+
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf && echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
 
 RUN mkdir -p /butia_ws
 
@@ -78,7 +62,7 @@ WORKDIR /butia_ws
 
 COPY ./src ./src
 
-RUN rosdep init && rosdep update && rodep install --from-paths src --ignore-src
+RUN source /opt/ros/melodic/setup.bash && rosdep init && rosdep update && rosdep install --from-paths src --ignore-src -y
 
 RUN source /opt/ros/melodic/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release
 
@@ -87,9 +71,7 @@ ADD entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 ADD filterable-rosmaster.py /opt/ros/melodic/bin/
-RUN rm /opt/ros/melodic/bin/rosmaster && ln -s /opt/ros/melodic/bin/filterable-rosmaster.py /opt/ros/$melodic/bin/rosmaster
-
-RUN source /wrs_ws/devel/setup.bash && rosrun tmc_gazebo_task_evaluators setup_score_widget
+RUN rm /opt/ros/melodic/bin/rosmaster && ln -s /opt/ros/melodic/bin/filterable-rosmaster.py /opt/ros/melodic/bin/rosmaster
 
 ADD supervisord.conf /etc/supervisor/supervisord.conf
 
