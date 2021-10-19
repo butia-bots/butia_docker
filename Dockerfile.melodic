@@ -65,7 +65,7 @@ RUN apt-get update && \
     ros-melodic-effort-controllers \
     ros-melodic-ros-controllers \
     ros-melodic-tf-conversions \
-    pip install -U --ignore-installed wheel pyassimp supervisor supervisor_twiddler && \
+    pip install --ignore-installed wheel pyassimp supervisor supervisor_twiddler && \
     apt-get autoremove -y && \
     apt-get clean
 
