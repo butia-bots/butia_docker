@@ -75,7 +75,7 @@ WORKDIR /butia_ws
 
 COPY ./src ./src
 
-RUN source /opt/ros/melodic && catkin_make -DCMAKE_BUILD_TYPE=Release
+RUN source /opt/ros/melodic/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release
 
 ADD entrypoint.sh /entrypoint.sh
 
