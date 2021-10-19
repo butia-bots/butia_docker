@@ -27,19 +27,13 @@
 # POSSIBILITY OF SUCH DAMAGE.
 set -e
 
-# setup ros environment
-source "/opt/ros/$ROS_DISTRO/setup.bash"
-source "/opt/wrs/setup.bash"
+#source /opt/ros/$ROS_DISTRO/setup.bash
+source /butia_ws/devel/setup.bash
 
 # make rosmaster accesible from the host
 export ROS_IP=`hostname -i`
 
-# setup gazebo environment
-source "/usr/share/gazebo/setup.sh"
-
 # reject access to gazebo service from external host
 export GAZEBO_IP_WHITE_LIST="127.0.0.1"
 
-rosrun tmc_gazebo_task_evaluators setup_score_widget
-
-roslaunch doris_simulation_larc2021 doris_simulation_larc2021.launch
+exec "$@"

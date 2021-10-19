@@ -27,7 +27,6 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 # to github
-docker push ghcr.io/butia-bots/tmc_wrs_docker:latest
-docker push ghcr.io/butia-bots/tmc_wrs_docker:nvidia
+docker push ghcr.io/butia-bots/butia_ros:melodic
 #docker push ghcr.io/butia-bots/tmc_wrs_docker:forclass
 #docker push ghcr.io/butia-bots/tmc_wrs_docker:challenge
