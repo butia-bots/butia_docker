@@ -64,7 +64,7 @@ RUN apt-get update && \
     liburdfdom-tools \
     ros-melodic-effort-controllers \
     ros-melodic-ros-controllers \
-    ros-melodic-tf-conversions \
+    ros-melodic-tf-conversions && \
     pip install pyassimp supervisor supervisor_twiddler && \
     apt-get autoremove -y && \
     apt-get clean
