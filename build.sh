@@ -28,7 +28,7 @@
 
 set -e
 
-IMAGE_NAME="ghcr.io/butia-bots/butia_ros"
+IMAGE_NAME="ghcr.io/butia-bots/butia_docker"
 
 BUILD_DATE=`date +%Y%m%d`
 BUILD_ARGS=""
