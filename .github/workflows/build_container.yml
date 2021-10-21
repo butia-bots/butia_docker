@@ -18,15 +18,15 @@ jobs:
       - name: Checkout repos
         run: |
           vcs import --recursive . < butia_minimal.repos
+      - name: Log into registry
+        run: | 
+          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Pull pre-built image
         run: |
           ./pull.sh
       - name: Build images
         run: |
           ./build.sh
-      - name: Log into registry
-        run: | 
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Push images
         run: |
           ./push.sh   
