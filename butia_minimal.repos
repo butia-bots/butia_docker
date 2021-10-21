@@ -47,10 +47,6 @@ repositories:
     type: git
     url: https://github.com/wmoralesap/darknet_ros
     version: yolov4
-  src/dope:
-    type: git
-    url: https://github.com/NVlabs/Deep_Object_Pose.git
-    version: master
   src/gazebo-pkgs:
     type: git
     url: https://github.com/JenniferBuehler/gazebo-pkgs.git
