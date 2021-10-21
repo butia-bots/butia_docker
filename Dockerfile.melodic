@@ -70,7 +70,12 @@ RUN vcs import --recursive . < butia_minimal.repos
 
 RUN source /opt/ros/melodic/setup.bash && rosdep init && rosdep update && rosdep install --from-paths src --ignore-src -y
 
-RUN source /opt/ros/melodic/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release
+RUN source /opt/ros/melodic/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_WHITELIST_PACKAGES="darknet_ros_msgs"
+
+RUN source /butia_ws/devel/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_WHITELIST_PACKAGES="butia_vision_msgs" 
+
+RUN source /butia_ws/devel/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_WHITELIST_PACKAGES=""
+
 
 ADD entrypoint.sh /entrypoint.sh
 
