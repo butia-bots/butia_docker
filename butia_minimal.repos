@@ -85,11 +85,11 @@ repositories:
     version: melodic-devel
   src/tmc_gazebo_task_evaluators:
     type: git
-    url: https://github.com/hsr-project/tmc_gazebo_task_evaluators.git
+    url: https://github.com/butia-bots/tmc_gazebo_task_evaluators.git
     version: master
   src/tmc_wrs_gazebo:
     type: git
-    url: https://github.com/hsr-project/tmc_wrs_gazebo
+    url: https://github.com/butia-bots/tmc_wrs_gazebo
     version: master
   src/xacro:
     type: git
