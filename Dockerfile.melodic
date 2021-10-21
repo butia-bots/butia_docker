@@ -56,17 +56,22 @@ RUN apt-get update && \
     freeglut3-dev \
     python-rosdep \
     python-vcstool && \
-    pip install pyassimp supervisor supervisor_twiddler && \
+    pip install pyassimp supervisor redis supervisor_twiddler && \
     apt-get autoremove -y && \
     apt-get clean
+
+RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf \
+    && echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+
+ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+
 
 RUN mkdir -p /butia_ws
 
 WORKDIR /butia_ws
 
-COPY butia_minimal.repos butia_minimal.repos
-
-RUN vcs import --recursive . < butia_minimal.repos
+COPY src src
 
 RUN source /opt/ros/melodic/setup.bash && rosdep init && rosdep update && rosdep install --from-paths src --ignore-src -y
 

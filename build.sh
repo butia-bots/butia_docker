@@ -28,4 +28,4 @@
 
 IMAGE_NAME="ghcr.io/butia-bots/butia_docker"
 
-docker build --cache-from=${IMAGE_NAME}:melodic -t ${IMAGE_NAME}:melodic -f Dockerfile.melodic .
+docker build --cache-from ${IMAGE_NAME}:melodic -t ${IMAGE_NAME}:melodic -f Dockerfile.melodic .

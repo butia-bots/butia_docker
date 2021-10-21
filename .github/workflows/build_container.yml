@@ -12,6 +12,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          pip install python-vcstool
+      - name: Checkout repos
+        run: |
+          vcs import --recursive . < butia_minimal.repos
+      - name: Pull pre-built image
+        run: |
+          ./pull.sh
       - name: Build images
         run: |
           ./build.sh
