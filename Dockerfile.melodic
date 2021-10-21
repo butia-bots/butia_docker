@@ -39,7 +39,7 @@ ENV NVIDIA_DRIVER_CAPABILITIES \
     ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}compute,compat32,graphics,utility,video,display
 ENV QT_X11_NO_MITSHM 1
 
-RUN apt-get update && apt-get install --no-install-recommends -y wget software-properties-common curl lsb-release
+RUN apt-get update && apt-get install --no-install-recommends -y wget software-properties-common curl lsb-release gpg-agent
 
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
