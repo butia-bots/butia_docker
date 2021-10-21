@@ -71,10 +71,6 @@ repositories:
     type: git
     url: https://github.com/ros-planning/moveit_task_constructor.git
     version: master
-  src/orocos_kinematics_dynamics:
-    type: git
-    url: https://github.com/orocos/orocos_kinematics_dynamics
-    version: master
   src/robot_state_publisher:
     type: git
     url: https://github.com/ros/robot_state_publisher
