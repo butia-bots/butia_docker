@@ -25,7 +25,6 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-#FROM nvidia/cudagl:10.2-devel-ubuntu18.04
 FROM ubuntu:18.04
 
 SHELL ["/bin/bash", "-c"]
@@ -47,7 +46,7 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     curl apt-transport-https python-pip python3-pip git \
     ros-melodic-ros-core \
-    cuda \
+    cuda-10-2 \
     libxext6 \
     libx11-6 \
     libglvnd0 \
@@ -65,7 +64,9 @@ RUN mkdir -p /butia_ws
 
 WORKDIR /butia_ws
 
-COPY ./src ./src
+COPY butia_minimal.repos butia_minimal.repos
+
+RUN vcs import --recursive . < butia_minimal.repos
 
 RUN source /opt/ros/melodic/setup.bash && rosdep init && rosdep update && rosdep install --from-paths src --ignore-src -y
 

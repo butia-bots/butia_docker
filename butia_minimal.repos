@@ -1,11 +1,56 @@
 repositories:
-  src/LMS1xx:
+  ros_controllers:
     type: git
-    url: https://github.com/clearpathrobotics/LMS1xx.git
+    url: https://github.com/ros-controls/ros_controllers
+    version: melodic-devel
+  src/butia_behavior:
+    type: git
+    url: https://github.com/butia-bots/butia_behavior
+    version: master
   src/butia_description:
     type: git
-    url: https://github.com/butia-bots/butia_description.git
+    url: https://github.com/butia-bots/butia_description
     version: gripper_range_sensor
+  src/butia_moveit:
+    type: git
+    url: https://github.com/butia-bots/butia_moveit
+    version: master
+  src/butia_navigation_system:
+    type: git
+    url: https://github.com/butia-bots/butia_navigation_system
+    version: master
+  src/butia_simulation:
+    type: git
+    url: https://github.com/butia-bots/butia_simulation
+    version: change_home_position
+  src/butia_speech:
+    type: git
+    url: https://github.com/butia-bots/butia_speech
+    version: master
+  src/butia_vision:
+    type: git
+    url: https://github.com/butia-bots/butia_vision
+    version: master
+  src/butia_world:
+    type: git
+    url: https://github.com/butia-bots/butia_world
+    version: master
+  src/butia_world_msgs:
+    type: git
+    url: https://github.com/butia-bots/butia_world_msgs
+    version: master
+  src/camera_info_manager_py:
+    type: git
+    url: https://github.com/ros-perception/camera_info_manager_py
+    version: master
+  src/darknet_ros:
+    type: git
+    url: https://github.com/wmoralesap/darknet_ros
+    version: yolov4
+  src/dope:
+    type: git
+    url: https://github.com/NVlabs/Deep_Object_Pose.git
+    version: master
   src/gazebo-pkgs:
     type: git
     url: https://github.com/JenniferBuehler/gazebo-pkgs.git
@@ -14,23 +59,39 @@ repositories:
     type: git
     url: https://github.com/JenniferBuehler/general-message-pkgs.git
     version: master
-  src/hector_gazebo:
-    type: git
-    url: https://github.com/tu-darmstadt-ros-pkg/hector_gazebo.git
-    version: melodic-devel
   src/hector_models:
     type: git
-    url: https://github.com/tu-darmstadt-ros-pkg/hector_models.git
+    url: https://github.com/tu-darmstadt-ros-pkg/hector_models
+    version: kinetic-devel
+  src/lms1xx:
+    type: git
+    url: https://github.com/clearpathrobotics/lms1xx
     version: melodic-devel
-  src/gazebo_ros_control_select_joints:
+  src/mask_rcnn_ros:
     type: git
-    url: https://github.com/tu-darmstadt-ros-pkg/gazebo_ros_control_select_joints.git
-    version: master
-  src/object_recognition_msgs:
+    url: https://github.com/crislmfroes/mask_rcnn_ros
+    version: kinetic-devel
+  src/moveit_task_constructor:
     type: git
-    url: https://github.com/wg-perception/object_recognition_msgs.git
+    url: https://github.com/ros-planning/moveit_task_constructor.git
     version: master
-  src/pysdf:
+  src/orocos_kinematics_dynamics:
     type: git
-    url: https://github.com/andreasBihlmaier/pysdf.git
+    url: https://github.com/orocos/orocos_kinematics_dynamics
     version: master
+  src/robot_state_publisher:
+    type: git
+    url: https://github.com/ros/robot_state_publisher
+    version: melodic-devel
+  src/tmc_gazebo_task_evaluators:
+    type: git
+    url: https://github.com/hsr-project/tmc_gazebo_task_evaluators.git
+    version: master
+  src/tmc_wrs_gazebo:
+    type: git
+    url: https://github.com/hsr-project/tmc_wrs_gazebo
+    version: master
+  src/xacro:
+    type: git
+    url: https://github.com/ros/xacro
+    version: melodic-devel

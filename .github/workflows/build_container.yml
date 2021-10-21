@@ -10,14 +10,8 @@ jobs:
   build_registry_image:
     runs-on: ubuntu-latest
     steps:
-      - name: Install dependencies
-        run: |
-          sudo pip install vcstool
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Clone repositories
-        run: |
-          vcs import --recursive < butia_minimal.repos
       - name: Build images
         run: |
           ./build.sh
