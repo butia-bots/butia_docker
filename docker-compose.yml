@@ -41,11 +41,36 @@ services:
     image: ghcr.io/butia-bots/butia_docker:melodic
     runtime: nvidia
     ipc: host
+    entrypoint: /entrypoint.sh roscore
     security_opt:
       - seccomp:unconfined
     environment:
       - DISPLAY=:0
     volumes_from:
       - xserver
+    volumes:
+      - butia_ws:/butia_ws
     depends_on:
       - xserver
+  workspace:
+    image: ghcr.io/butia-bots/ros-devcontainer-vscode:nvidia
+    runtime: nvidia
+    ipc: host
+    security_opt:
+    - seccomp:unconfined
+    ports:
+    - "3001:3000"
+    - "3002:8888"
+    volumes:
+    - .:/workspace
+    - ~/.gitconfig:/home/developer/.gitconfig
+    environment:
+    - DISPLAY=:0
+    - ROS_MASTER_URI=http://simulator:11311/
+    volumes_from:
+    - xserver
+    - simulator
+    depends_on:
+    - xserver
+volumes:
+  butia_ws:
