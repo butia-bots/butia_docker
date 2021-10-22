@@ -79,7 +79,7 @@ RUN source /opt/ros/melodic/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release
 
 RUN source /butia_ws/devel/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_WHITELIST_PACKAGES="butia_vision_msgs" 
 
-RUN source /butia_ws/devel/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_WHITELIST_PACKAGES=""
+RUN source /butia_ws/devel/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_WHITELIST_PACKAGES="" -DCUDA_INCLUDE_DIRS=/usr/local/cuda-10.2/include
 
 #RUN apt purge nvidia-driver-* -y
 
