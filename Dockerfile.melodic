@@ -25,7 +25,7 @@
 # ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
-FROM ubuntu:18.04
+FROM nvidia/cuda:10.2-cudnn8-devel-ubuntu18.04
 
 SHELL ["/bin/bash", "-c"]
 
@@ -33,8 +33,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get install --no-install-recommends -y wget software-properties-common curl lsb-release gpg-agent build-essential
 
-RUN curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
-    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" > /etc/apt/sources.list.d/cuda.list
+#RUN curl -fsSL https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub | apt-key add - && \
+#    echo "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/ /" > /etc/apt/sources.list.d/cuda.list
 
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list' && \
     curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
@@ -47,9 +47,9 @@ RUN apt-get update && \
     curl apt-transport-https python-pip python3-pip git \
     ros-melodic-ros-core \
     cuda-10-2 \
-    libxext6 \
-    libx11-6 \
-    libglvnd0 \
+    #libxext6 \
+    #libx11-6 \
+    #libglvnd0 \
     libgl1 \
     libglx0 \
     libegl1 \
@@ -60,11 +60,11 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     apt-get clean
 
-RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf \
-    && echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
+#RUN echo "/usr/local/nvidia/lib" >> /etc/ld.so.conf.d/nvidia.conf \
+#    && echo "/usr/local/nvidia/lib64" >> /etc/ld.so.conf.d/nvidia.conf
 
-ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
-ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+#ENV PATH /usr/local/nvidia/bin:/usr/local/cuda/bin:${PATH}
+#ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 
 
 RUN mkdir -p /butia_ws
@@ -81,7 +81,7 @@ RUN source /butia_ws/devel/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release 
 
 RUN source /butia_ws/devel/setup.bash && catkin_make -DCMAKE_BUILD_TYPE=Release -DCATKIN_WHITELIST_PACKAGES=""
 
-RUN apt purge nvidia-driver-* -y
+#RUN apt purge nvidia-driver-* -y
 
 ADD entrypoint.sh /entrypoint.sh
 
