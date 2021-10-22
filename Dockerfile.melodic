@@ -46,10 +46,9 @@ RUN apt-get update && \
     apt-get install --no-install-recommends -y \
     curl apt-transport-https python-pip python3-pip git \
     ros-melodic-ros-core \
-    cuda-10-2 \
-    #libxext6 \
-    #libx11-6 \
-    #libglvnd0 \
+    libxext6 \
+    libx11-6 \
+    libglvnd0 \
     libgl1 \
     libglx0 \
     libegl1 \

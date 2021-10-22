@@ -29,6 +29,7 @@ set -e
 
 #source /opt/ros/$ROS_DISTRO/setup.bash
 source /butia_ws/devel/setup.bash
+catkin_make -DCMAKE_BUILD_TYPE=Release
 
 # make rosmaster accesible from the host
 export ROS_IP=`hostname -i`
